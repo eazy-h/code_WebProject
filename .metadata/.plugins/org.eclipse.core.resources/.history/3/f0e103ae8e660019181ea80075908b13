@@ -1,0 +1,6 @@
+package org.zerock.persistence;
+
+@Runwith
+public class DataSourceTest {
+
+}

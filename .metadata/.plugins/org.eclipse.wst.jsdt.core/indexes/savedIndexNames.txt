@@ -1,8 +1,3 @@
 INDEX VERSION 1.4+/Users/lj/Documents/git/code_WebProject/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
-3293752180.index
-708212558.index
-994001194.index
-50138295.index
-2981559039.index
-3807707825.index
-1001486086.index
+3704835626.index
+3292010082.index

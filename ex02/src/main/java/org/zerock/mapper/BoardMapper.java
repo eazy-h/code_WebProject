@@ -6,8 +6,8 @@ import org.apache.ibatis.annotations.Select;
 import org.zerock.domain.BoardDTO;
 
 public interface BoardMapper {
-//	@Select("select * from tbl_board where bno > 0")
-//	public List<BoardDTO> getList();
+
+	public List<BoardDTO> getList();
 	
 	//insert만 할때
 	public void insert(BoardDTO board);

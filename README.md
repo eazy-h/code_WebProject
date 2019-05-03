@@ -41,7 +41,9 @@
     
 
 - 프레젠테이션영역
-  -  
+  
+  -  웹이 구현영역 Controller내에서 여러 메소드를 작성 후 Mapping을 통해 URL로 분기하는 구조
+  -  service 영역의 연동해야함으로 의존성 처리 @AllArgsConstructor 후 service 클래스 선언(Service에 의존하는 Controller)
 
 
 
@@ -49,8 +51,13 @@
 
 - @Service : ServiceImpl 클래스에 계층구조상 비지니스 영역을 담당하는 객체임을 표시
 - @AllargsContstructor : 모든 파라미터를 이용하는 생성자를 만드는 어노테이션
+- @Controller : 컨트롤러클래스를 스프링 빈으로 등록
+- @Log4j : 프로그램 실행중 로그를 남기기 위한 빈 등록
+- @WebAppConfiguration : servlet의 servlet-context를 이용하기 위한 선언(WebApplicationContext 사용)
+- @Before : 테스트 이전 매번 실행되는 메소드
 
 ```
+//예시
 package org.zerock.service;
 
 import java.util.List;

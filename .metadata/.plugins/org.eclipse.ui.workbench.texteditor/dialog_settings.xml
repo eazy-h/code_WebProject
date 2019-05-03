@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item value="false" key="isRegEx"/>
-		<item value="javax" key="selection"/>
-		<item value="false" key="casesensitive"/>
-		<item value="false" key="incremental"/>
-		<item value="true" key="wrap"/>
-		<item value="false" key="wholeword"/>
+		<item key="isRegEx" value="false"/>
+		<item key="selection" value="Data"/>
+		<item key="casesensitive" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="wrap" value="true"/>
+		<item key="wholeword" value="false"/>
 		<list key="findhistory">
-			<item value="javax"/>
-			<item value="setting"/>
-			<item value="MappingHandler"/>
-			<item value="nio"/>
-			<item value="basic"/>
-			<item value="logging"/>
-			<item value="log4"/>
-			<item value="junit"/>
-			<item value="spring-test"/>
-			<item value="lombok"/>
+			<item value="dataTable"/>
+			<item value="data"/>
+			<item value="dataTables_wrapper"/>
+			<item value="dataTables-example_info"/>
+			<item value="dataTables_length"/>
+			<item value="col-sm-6"/>
+			<item value="row"/>
+			<item value="panel-heading"/>
+			<item value="panel-head"/>
+			<item value="page-wrapper"/>
+			<item value="ㅔㅁㅎㄷ-ㅈㄱ메ㅔㄷㄱ"/>
+			<item value="page"/>
+			<item value="../"/>
+			<item value="dataTables-example"/>
+			<item value="/nav"/>
 		</list>
 		<list key="replacehistory">
+			<item value="/resources/"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item value="294" key="DIALOG_WIDTH"/>
-		<item value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont" key="DIALOG_FONT_NAME"/>
-		<item value="408" key="DIALOG_HEIGHT"/>
-		<item value="813" key="DIALOG_X_ORIGIN"/>
-		<item value="223" key="DIALOG_Y_ORIGIN"/>
+		<item key="DIALOG_WIDTH" value="294"/>
+		<item key="DIALOG_FONT_NAME" value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont"/>
+		<item key="DIALOG_HEIGHT" value="408"/>
+		<item key="DIALOG_X_ORIGIN" value="1182"/>
+		<item key="DIALOG_Y_ORIGIN" value="354"/>
 	</section>
 </section>

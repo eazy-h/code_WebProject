@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Select;
 import org.zerock.domain.BoardDTO;
+import org.zerock.domain.Criteria;
 
 public interface BoardMapper {
 
@@ -19,4 +20,8 @@ public interface BoardMapper {
 	public int delete(Long bno);
 	//게시물 수정
 	public int update(BoardDTO board);
+	//페이징
+	public List<BoardDTO> getListPaging(Criteria cri);
+	//게시물 전체 가져오기(검색에서 Criteria 필요)
+	public int getTotalCount(Criteria cri);
 }

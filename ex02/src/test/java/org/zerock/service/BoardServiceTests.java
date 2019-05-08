@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.zerock.domain.BoardDTO;
+import org.zerock.domain.Criteria;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -41,10 +42,11 @@ public class BoardServiceTests {
 //		log.info("생성된 게시물 번호 : "+board.getBno());
 //	}
 	
-//	@Test
-//	public void testGetList() {
+	@Test
+	public void testGetList() {
 //		service.getList().forEach(board -> log.info(board));
-//	}
+		service.getList(new Criteria(2,10)).forEach(board -> log.info(board));
+	}
 	
 //	@Test
 //	public void testGet() {
@@ -61,12 +63,12 @@ public class BoardServiceTests {
 //		}
 //	}
 	
-	@Test
-	public void  testDelete() {
-		if(service.get(6L)!=null) {
-			log.info(service.remove(6L));			
-		}else {
-			return ;
-		}
-	}
+//	@Test
+//	public void  testDelete() {
+//		if(service.get(6L)!=null) {
+//			log.info(service.remove(6L));			
+//		}else {
+//			return ;
+//		}
+//	}
 }

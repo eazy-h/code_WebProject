@@ -32,7 +32,7 @@ public class BoardController {
 	
 	@GetMapping("/list")
 	public void list(Model model, Criteria cri) {
-		log.info("list" + cri);
+		log.info("list : " + cri);
 		model.addAttribute("list",service.getList(cri));
 //		model.addAttribute("pageMaker", new PageDTO(cri, 123));
 		int total = service.getTotal(cri);
@@ -64,9 +64,11 @@ public class BoardController {
 			rttr.addFlashAttribute("result","success");
 		}
 		
-		rttr.addAttribute("pageNum",cri.getPageNum());
-		rttr.addAttribute("amount",cri.getAmount());
-		return "redirect:/board/list";
+//		rttr.addAttribute("pageNum",cri.getPageNum());
+//		rttr.addAttribute("amount",cri.getAmount());
+//		rttr.addAttribute("type",cri.getType());
+//		rttr.addAttribute("keyword",cri.getKeyword());
+		return "redirect:/board/list" + cri.getListLink();
 	}
 	
 	@PostMapping("/delete")
@@ -77,9 +79,10 @@ public class BoardController {
 		}
 		rttr.addAttribute("pageNum",cri.getPageNum());
 		rttr.addAttribute("amount",cri.getAmount());
+		rttr.addAttribute("type",cri.getType());
+		rttr.addAttribute("keyword",cri.getKeyword());
 		
-		
-		return "redirect:/board/list";
+		return "redirect:/board/list" + cri.getListLink();
 	}	
 	
 	

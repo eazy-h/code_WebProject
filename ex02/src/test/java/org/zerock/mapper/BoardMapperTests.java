@@ -79,12 +79,25 @@ public class BoardMapperTests {
 //	}
 	
 	//paging test
+//	@Test
+//	public void pagingTest() {
+//		Criteria criteria = new Criteria();
+//		criteria.setPageNum(3);
+//		criteria.setAmount(10);
+//		List<BoardDTO>list = boardMapper.getListPaging(criteria);
+//		list.forEach(board-> log.info(board.getBno()));
+//	}
+	
+	//Search test
 	@Test
-	public void pagingTest() {
-		Criteria criteria = new Criteria();
-		criteria.setPageNum(3);
-		criteria.setAmount(10);
-		List<BoardDTO>list = boardMapper.getListPaging(criteria);
-		list.forEach(board-> log.info(board.getBno()));
+	public void testSearch() {
+		Criteria cri = new Criteria();
+		cri.setKeyword("새로");
+		cri.setType("");
+		cri.setPageNum(1);
+		cri.setAmount(10);
+		List<BoardDTO> list = boardMapper.getListPaging(cri);
+		
+		list.forEach(board-> log.info(board));
 	}
 }

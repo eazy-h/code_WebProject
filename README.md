@@ -87,6 +87,24 @@ public class BoardServiceImpl implements BoardService{
 
 
 
+RestAPI
+
+- @RestController : Controller가 REST 방식을 처리하기 위한 것을 명시
+
+- @ResponseBody : 일반적인 view(jsp,asp)로 전달되는 것이 아니라 데이터 자체를 전달하는 용도
+
+- @PathVariable : URL 경로에 있는 값을 파라미터로 사용할 때 사용
+
+- @CrossOrigin : Ajax의 크로스 도메인 문제를 해결
+
+- @RequestBody : JSON 데이터를 원하는 타입으로 Binding
+
+- @ResponseEntity : 데이터와 함께 HTTP header의 상태메세지를 함께 전달
+
+  
+
+
+
 
 
 ## 문제해결

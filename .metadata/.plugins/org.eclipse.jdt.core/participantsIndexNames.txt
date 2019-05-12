@@ -1,4 +1,8 @@
 INDEX VERSION 1.131
+/Users/lj/Documents/git/code_WebProject/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/40982695.index
+/ex03/src/main/java
+/Users/lj/Documents/git/code_WebProject/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/2268482850.index
+/ex03/src/main/java
 /Users/lj/Documents/git/code_WebProject/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3333088556.index
 /ex02/src/main/java
 /Users/lj/Documents/git/code_WebProject/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/2312218099.index
@@ -7,6 +11,8 @@ INDEX VERSION 1.131
 /ex00/src/main/java
 /Users/lj/Documents/git/code_WebProject/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3704835626.index
 /ex02/src/main/java
+/Users/lj/Documents/git/code_WebProject/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1777235819.index
+/ex03/src/main/java
 /Users/lj/Documents/git/webPortfolio/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1630507530.index
 /jex00/src/main/java
 /Users/lj/Documents/git/webPortfolio/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/2485023825.index
@@ -17,3 +23,5 @@ INDEX VERSION 1.131
 /ex02/src/main/java
 /Users/lj/Documents/git/code_WebProject/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1630507530.index
 /jex00/src/main/java
+/Users/lj/Documents/git/code_WebProject/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1364964296.index
+/ex03/src/main/java

@@ -70,7 +70,10 @@ public class SampleController {
 	public Map<String, SampleVO> getMap() {
 		
 		Map<String, SampleVO> map = new HashMap<>(); 
-		map.put("First",new SampleVO(111, "그루트", "주니어"));
+		map.put("No.1",new SampleVO(111, "그루트", "주니어"));
+		map.put("No.2",new SampleVO(112, "캡틴", "아메리카"));
+		map.put("No.3",new SampleVO(113, "타노스", "장갑"));
+		map.put("No.4",new SampleVO(114, "닥터", "스트레인지"));
 		
 		return map;
 	

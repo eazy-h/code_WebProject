@@ -27,6 +27,7 @@ public class Criteria {
 	}
 	
 	//Title, Writer, Content 를 배열로 처리
+	//mapper에서 sql 조건문 처리시 사용
 	public String[] getTypeArr() {
 		return type == null ? new String[] {} : type.split("");
 	}

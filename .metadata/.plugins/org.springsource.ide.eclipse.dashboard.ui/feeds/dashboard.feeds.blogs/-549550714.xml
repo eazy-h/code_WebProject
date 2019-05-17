@@ -80,7 +80,7 @@
 &lt;p&gt;This distinction is significant, as you could still use imperative components such as a JPA or JDBC query. Wrapping these results into a &lt;code&gt;Publisher&lt;/code&gt; type signals Spring to apply reactive rather than imperative transaction management. That being said, a reactive transaction arrangement does not open a &lt;code&gt;ThreadLocal&lt;/code&gt;-bound transaction, which is required for JPA or JDBC.&lt;/p&gt;&lt;h2&gt;&lt;a href="#transactionaloperator" class="anchor" name="transactionaloperator"&gt;&lt;/a&gt;TransactionalOperator&lt;/h2&gt;
 &lt;p&gt;As a next step, let’s take a look at programmatic transaction management by using &lt;code&gt;TransactionalOperator&lt;/code&gt;:&lt;/p&gt;
 &lt;pre&gt;&lt;code class="prettyprint java"&gt;ConnectionFactory factory = …&#xD;
-ConnectionFactoryTransactionManager tm = new ConnectionFactoryTransactionManager(factory);&#xD;
+ReactiveTransactionManager tm = new R2dbcTransactionManager(factory);&#xD;
 DatabaseClient db = DatabaseClient.create(factory);&#xD;
 &#xD;
 TransactionalOperator rxtx = TransactionalOperator.create(tm);&#xD;
@@ -95,7 +95,7 @@ Mono&amp;lt;Void&amp;gt; atomicOperation = db.execute()&#xD;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The code above contains some notable components:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;ConnectionFactoryTransactionManager&lt;/code&gt;: This is the reactive transaction manager for a R2DBC &lt;code&gt;ConnectionFactory&lt;/code&gt; .&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;R2dbcTransactionManager&lt;/code&gt;: This is the reactive transaction manager for a R2DBC &lt;code&gt;ConnectionFactory&lt;/code&gt; .&lt;/li&gt;
   &lt;li&gt;&lt;code&gt;DatabaseClient&lt;/code&gt;: The client provides access to SQL databases using R2DBC drivers.&lt;/li&gt;
   &lt;li&gt;&lt;code&gt;TransactionalOperator&lt;/code&gt;: This operator associates all upstream R2DBC publishers with a transactional context. You can use it either operator style &lt;code&gt;as(…::transactional)&lt;/code&gt; or call-back style with &lt;code&gt;execute(txStatus -&amp;gt; …)&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
@@ -122,7 +122,8 @@ Mono&amp;lt;Void&amp;gt; completion = outsideTransaction.then(insideTransaction)
 &lt;p&gt;R2DBC is one of Spring’s integrations with reactive transactions. Another integration is MongoDB through Spring Data MongoDB, which you can use to participate in multi-document transactions by using reactive programming.&lt;/p&gt;
 &lt;p&gt;Spring Data MongoDB ships with &lt;code&gt;ReactiveMongoTransactionManager&lt;/code&gt; as a &lt;code&gt;ReactiveTransactionManager&lt;/code&gt; implementation. It creates a session and manages transactions so that code executed within a managed transaction participates in multi-document transactions.&lt;/p&gt;
 &lt;p&gt;The following example shows programmatic transaction management with MongoDB:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint java"&gt;ReactiveMongoTransactionManager tm = …&#xD;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;ReactiveTransactionManager tm &#xD;
+  = new ReactiveMongoTransactionManager(databaseFactory);&#xD;
 ReactiveMongoTemplate template = …&#xD;
 template.setSessionSynchronization(ALWAYS);                                          &#xD;
 &#xD;

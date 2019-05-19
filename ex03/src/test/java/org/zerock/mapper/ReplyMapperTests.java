@@ -82,14 +82,24 @@ public class ReplyMapperTests {
 //		
 //	}
 	
+//	@Test
+//	public void testSelect() {
+//		
+//		Criteria cri = new Criteria();
+//		
+//		List<ReplyVO>replies = replyMapper.getListPaging(cri,bnoArr[0]);
+//		
+//		replies.forEach(reply -> log.info(reply));
+//		
+//	}
+	
 	@Test
-	public void testSelect() {
+	public void testList2() {
 		
-		Criteria cri = new Criteria();
+		Criteria cri = new Criteria(2,10);
 		
-		List<ReplyVO>replies = replyMapper.getListPaging(cri,bnoArr[0]);
+		List<ReplyVO> replies = replyMapper.getListPaging(cri,458862L);
 		
 		replies.forEach(reply -> log.info(reply));
-		
 	}
 }

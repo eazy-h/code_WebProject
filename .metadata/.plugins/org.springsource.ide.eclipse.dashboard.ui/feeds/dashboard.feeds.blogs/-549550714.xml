@@ -5,7 +5,69 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2019-05-17T04:57:31Z</updated>
+  <updated>2019-05-21T12:39:02Z</updated>
+  <entry>
+    <title>This Week in Spring - May 21, 2019</title>
+    <link rel="alternate" href="https://spring.io/blog/2019/05/21/this-week-in-spring-may-21-2019" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2019-05-21:3688</id>
+    <updated>2019-05-21T12:39:02Z</updated>
+    <content type="html">&lt;p&gt;Hi Spring fans! It&amp;rsquo;s been quite a crazy week! I was in Spring I/O last week in Barcelona, Spain and there was a deluge of interesting news to come out of the show! I loved the show - a sort of mini SpringOne - and am chomping at the bit to see what comes next. I&amp;rsquo;m now beginning a small tour starting in Zurich, Switzerland; then I&amp;rsquo;m off to the paradise-like Paris, France for the epic SpringOne Tour event there, then I&amp;rsquo;m off to Minsk, Belarus; then off to Barcelona, Spain for JBCN, and then - finally - home for the middle school graduation of my kid at the end of the month. So much exciting stuff culminating in an even more exciting event, I can hardly stand it! &lt;/p&gt;
+&lt;p&gt;Anyway, we&amp;rsquo;ve got tons to get to today, so, let&amp;rsquo;s!&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;I love Ben Wilcock&amp;rsquo;s look at the 5th anniversary of PCF, &lt;a href="https://spring.io/blog/2019/05/21/pivotal-cloud-foundry-is-5-years-old-here-s-how-it-changed-my-life"&gt;&lt;em&gt;Pivotal Cloud Foundry is 5 years old, here’s how it changed my life&amp;hellip;&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2019/05/17/a-bootiful-podcast-community-member-nicolas-frankel-on-testing-security-and-more"&gt;A Bootiful Podcast: Community Member Nicolas Frankel on Testing, Security, and More&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2019/05/16/reactive-transactions-with-spring"&gt;Reactive Transactions with Spring&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2019/05/15/reactor-dysprosium-m1-is-available-now"&gt;Reactor Dysprosium-M1 is Available Now&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2019/05/15/spring-data-r2dbc-1-0-m2-and-spring-boot-starter-released"&gt;Spring Data R2DBC 1.0 M2 and Spring Boot starter released&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2019/05/15/spring-boot-2-1-5-released"&gt;Spring Boot 2.1.5 released&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2019/05/15/spring-boot-2-2-m3-available-now"&gt;Spring Boot 2.2 M3 available now&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Last week I looked at using Kafka from your Spring Batch ETL flow in this Spring Tips, &lt;a href="https://spring.io/blog/2019/05/15/spring-tips-spring-batch-and-apache-kafka"&gt;&lt;em&gt;Spring Tips: Spring Batch and Apache Kafka&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Integration lead Gary P. Russell has a &lt;a href="https://twitter.com/springcentral/status/1130798541356638208"&gt; wonderful post on Spring for Apache Kafka&lt;/a&gt; over on the Confleunt blog&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/making/status/1130694508935491584?s=12"&gt;twitter.com&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;I love the new &amp;ldquo;Push to Pivotal WS&amp;rdquo; button on the various &lt;a href="http://Spring.io/guides"&gt;Spring guides&lt;/a&gt;. Check out this one - &lt;a href="https://spring.io/guides/gs/rest-service/"&gt;Building a RESTful Web Service&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Have you tried Armeria? It&amp;rsquo;s an interesting project from Netty-creator Trustin Lee. &lt;a href="https://line.github.io/armeria/"&gt;It has integrations for Spring&lt;/a&gt; and it looks kind of interesting.&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/rbrtwnklr/status/1129658828226748417"&gt;Lots of interesting notes by Robert Winkler on the new release of Resilience4J&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/snicoll/status/1128939783512887296"&gt;Did you see that we announced support for Kotlin-based configuration for Gradle?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://speakerdeck.com/meistermeier/what-the-graph?slide=40"&gt;Take a look at the new, reactive Spring Data Neo4j&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Interesting talk from Andreas Evers on using [Spinnaker for cutting-edge continuous delivery(&lt;a href="https://twitter.com/springcloud/status/1129081211710787589"&gt;https://twitter.com/springcloud/status/1129081211710787589&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-framework/wiki/GraalVM-native-image-support"&gt;Have you seen our GraalVM native image page&lt;/a&gt;?&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/springcentral/status/1129056694686892032"&gt;This is pretty interesting: Spring Cloud Sleuth is used by Netflix&lt;/a&gt;!&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/bclozel/status/1128941501218791425"&gt;Want a quick review of the Kotlin related announcements from Spring IO?&lt;/a&gt; Check out this thread.&lt;/li&gt;
+  &lt;li&gt;Exciting news! &lt;a href="https://twitter.com/springcentral/status/1128898643686232064"&gt;Spring Boot Maven downloads have more than doubled&lt;/a&gt; in the past year, and are up 23% in just the past 3 months. Given that we&amp;rsquo;re talking about tens of millions of downlaods heere, those are some impressive numbers!&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/springcentral/status/1128898695859232768"&gt;And of course there&amp;rsquo;s a 138% increase over the last year in Spring Cloud downloads!&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
+  <entry>
+    <title>Pivotal Cloud Foundry is 5 years old, here’s how it changed my life...</title>
+    <link rel="alternate" href="https://spring.io/blog/2019/05/21/pivotal-cloud-foundry-is-5-years-old-here-s-how-it-changed-my-life" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Ben Wilcock</name>
+    </author>
+    <id>tag:spring.io,2019-05-21:3687</id>
+    <updated>2019-05-21T10:34:03Z</updated>
+    <content type="html">&lt;p&gt;&lt;a href="https://twitter.com/starbuxman"&gt;Josh Long&lt;/a&gt; often says that “production is the best place on the Internet.” But where I used to work, developers needed to negotiate with operations, networks, and security before their code could go anywhere near this promised land. &lt;/p&gt;
+&lt;p&gt;Understandably, each of these disciplines seemed to have the same hidden agenda: change is bad. Experience had taught us that change was difficult and error-prone, so as a company we’d become risk-averse and cautious about our deployments. Releases were infrequent and large. There was plenty that could go wrong.&lt;/p&gt;
+&lt;p&gt;In spite of this, every six months or so developers would bundle up their code changes into a release, write the release notes, create a rollback plan, and wait around until midnight on a Saturday to deploy it. The deployment would be done manually, and not by developers, but by someone in operations. Developers were strictly passengers on this particular release-train (after all, we’re “the people who write all the bugs” as my friend &lt;a href="https://twitter.com/cote"&gt;Coté&lt;/a&gt; would jokingly say). &lt;/p&gt;
+&lt;p&gt;So if production really is “the best place on the Internet”, I could only go there by proxy, at 3:00 AM on a Sunday, and only if I’d charmed my way past the “Change Authorization Board” first.&lt;/p&gt;
+&lt;p&gt;The whole process was unrewarding and depressing. It was so difficult that I almost quit because of it. There were simply too many barriers in the way of progress. Delivering code wasn’t a rewarding experience for anyone. You certainly couldn&amp;rsquo;t ‘experiment’ with exciting new ideas or technologies. The deployments were too big. The feedback loops were too long and the risks were too great.&lt;/p&gt;&lt;h3&gt;&lt;a href="#but-then-something-amazing-happened-hellip" class="anchor" name="but-then-something-amazing-happened-hellip"&gt;&lt;/a&gt;But then something amazing happened&amp;hellip;&lt;/h3&gt;
+&lt;p&gt;In November 2013 Pivotal Cloud Foundry came along and changed everything. By incorporating hundreds of DevOps best practices into an easy to consume package. &lt;a href="https://run.pivotal.io"&gt;Pivotal Web Services (PWS)&lt;/a&gt; could package, deploy, and run our code effortlessly with a few simple command line instructions. We could go from desktop to production with our software in minutes, and as often as we liked. &lt;/p&gt;
+&lt;p&gt;Developers loved it. Operators loved it. Security and Networks loved it. Best of all, our customers loved it! They couldn’t get enough of it in fact, but that’s another story. Just look how &lt;strong&gt;&lt;em&gt;fast&lt;/em&gt;&lt;/strong&gt; it is!!! You can have apps up and running in under 2 minutes:&lt;/p&gt;
+&lt;script id="asciicast-247474" src="https://asciinema.org/a/247474.js" async&gt;&lt;/script&gt;
+&lt;p&gt;Gone was the need to obtain permission before a deployment rolled out. Everything the Change Authorization Board wanted in order to keep us safe was already baked into the platform. Developers could work directly with the business, add some value daily, and use an automated pipeline to push it to the cloud. Because we now got instant feedback, innovation and experimentation became easy, safe and encouraged. Epic win! &lt;/p&gt;
+&lt;p&gt;It was the same story with backing services. Databases, messaging, monitoring, you name it, could all be created and attached with a few simple command-line instructions. Spring Boot even auto-wired them for you. No more waiting for your “new database request” ticket to shuffle it’s way up to the top of the database administrators todo list. Developers could commission their own services as and when required.&lt;/p&gt;
+&lt;p&gt;In the 5 short years that it’s been around, Pivotal Cloud Foundry has completely changed my life. It’s elevated me from the toil of release-trains and allowed developers like me to release code into the hands of users quicker, safer, and more often than ever before. &lt;/p&gt;
+&lt;p&gt;So if production really is “better than Disneyland, (&lt;a href="https://twitter.com/starbuxman"&gt;Josh Long&lt;/a&gt;, 2018)” thanks to Pivotal Cloud Foundry, I have a first-class season ticket!&lt;/p&gt;
+&lt;hr/&gt;
+&lt;p&gt;You can try Pivotal Web Services (a &amp;lsquo;pay-as-you-go&amp;rsquo; version of Pivotal Cloud Foundry) for yourself with this &lt;a href="https://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry/introduction"&gt;simple step by step tutorial&lt;/a&gt;. You don’t need a credit card to sign up for &lt;a href="https://run.pivotal.io"&gt;Pivotal Web Services&lt;/a&gt; and new users get $87 of free credit. It’s super easy to push your code and very, very rewarding! You can have something up and running in a couple of minutes. &lt;/p&gt;
+&lt;p&gt;Pivotal Web Services is based on &lt;a href="https://pivotal.io/pas"&gt;Pivotal Cloud Foundry PAS&lt;/a&gt; which allows enterprises to get the same smooth developer workflow on the cloud of their choice. &lt;/p&gt;
+&lt;!-- rendered by Sagan Renderer Service --&gt;</content>
+  </entry>
   <entry>
     <title>A Bootiful Podcast: Community Member Nicolas Frankel on Testing, Security, and More</title>
     <link rel="alternate" href="https://spring.io/blog/2019/05/17/a-bootiful-podcast-community-member-nicolas-frankel-on-testing-security-and-more" />
@@ -763,81 +825,5 @@ There is only need to worry about a Kinesis producer configuration, either class
     <content type="html">&lt;p&gt;Hi Spring fans! In today&amp;rsquo;s installment Josh Long (@starbuxman) sits down with Jetbrain&amp;rsquo;s Roman Elizarov (@relizarov). Roman works on the Kotlin team and, among other things, focuses on asynchronous programming with things like coroutines. This interview was a very detailed dive into the opportunities for asynchronous programming for Spring developers using Kotlin, especially in light of the new coroutine support coming in Spring Framework 5.2.&lt;/p&gt;
 &lt;iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/618107604&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"&gt;&lt;/iframe&gt;
 &lt;p&gt;Twitter: &lt;a href="relizarov"&gt;Roman Elizarov (@relizarov)&lt;/a&gt;&lt;br/&gt;A great blog by Sebastien Deleuze on &lt;a href="https://spring.io/blog/2019/04/12/going-reactive-with-spring-coroutines-and-kotlin-flow"&gt;our new support&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Tips: Reactive Web Views</title>
-    <link rel="alternate" href="https://spring.io/blog/2019/05/08/spring-tips-reactive-web-views" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2019-05-08:3667</id>
-    <updated>2019-05-08T17:52:00Z</updated>
-    <content type="html">&lt;p&gt;Hi Spring fans! In this installment of Spring Tips we look at how to create dynamic views using Spring Webflux, server-sent events, websockets and Thymeleaf&amp;rsquo;s reactive model attributes.&lt;/p&gt;
-&lt;p&gt;speaker: &lt;a href="http://twitter.com/starbuxman"&gt;Josh Long (@starbuxman)&lt;/a&gt;&lt;/p&gt;
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/ewpJ9EUAz5s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Boot for Apache Geode &amp; Pivotal GemFire 1.1.0.M1 Released!</title>
-    <link rel="alternate" href="https://spring.io/blog/2019/05/07/spring-boot-for-apache-geode-pivotal-gemfire-1-1-0-m1-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>John Blum</name>
-    </author>
-    <id>tag:spring.io,2019-05-07:3665</id>
-    <updated>2019-05-07T19:17:42Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;I am pleased to announce the release of &lt;em&gt;Spring Boot for Apache Geode &amp;amp; Pivotal GemFire/PCC&lt;/em&gt; (SBDG) &lt;code&gt;1.1.0.M1&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Bits (&lt;code&gt;org.springframework.geode:spring-geode-starter:1.1.0.M1&lt;/code&gt;) are available in the Spring &lt;a href="http://repo.spring.io/libs-milestone/org/springframework/geode/spring-geode-starter/1.1.0.M1/"&gt;libs-milestone&lt;/a&gt; repository.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="whats-new"&gt;&lt;a class="anchor" href="#whats-new"&gt;&lt;/a&gt;What&amp;#8217;s New&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;The SBDG 1.1 Milestone 1 (M1) release includes:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Rebases SBDG on Spring Framework 5.1, Spring Boot 2.1, Spring Data Lovelace
-and Spring Session 2.1.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Rebases SBDG on Apache Geode 1.6.0 and Pivotal GemFire 9.5.3.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;For a complete list of changes, see the &lt;a href="https://github.com/spring-projects/spring-boot-data-geode/blob/1.1.0.M1/spring-geode/src/main/resources/changelog.txt#L7-L21"&gt;changelog&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="whats-next"&gt;&lt;a class="anchor" href="#whats-next"&gt;&lt;/a&gt;What&amp;#8217;s Next&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;SBDG 1.1 M2 will include dedicated support for &lt;em&gt;In-line Caching&lt;/em&gt;, the second caching pattern in our 3 separate caching patters [&lt;em&gt;Look-Aside&lt;/em&gt;, &lt;em&gt;Inline&lt;/em&gt;, &lt;em&gt;Near&lt;/em&gt;].&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;As a friendly reminder, Spring&amp;#8217;s &lt;a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/integration.html#cache"&gt;Cache Abstraction&lt;/a&gt; already provides excellent support for the &lt;em&gt;Look-Aside Caching&lt;/em&gt; pattern, and SBDG (by extension of SDG) provides &lt;a href="https://docs.spring.io/autorepo/docs/spring-boot-data-geode-build/1.0.0.RELEASE/reference/html5/#geode-caching-provider"&gt;first-class support&lt;/a&gt; for using either Apache Geode or Pivotal GemFire/PCC as a caching provider in Spring&amp;#8217;s &lt;em&gt;Cache Abstraction&lt;/em&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;This was also covered nicely in the &lt;strong&gt;new&lt;/strong&gt; &lt;a href="https://docs.spring.io/autorepo/docs/spring-boot-data-geode-build/1.0.0.RELEASE/reference/html5/#geode-samples"&gt;Sample&lt;/a&gt; on &lt;em&gt;Look-Aside Caching&lt;/em&gt;, containing both a &lt;a href="https://docs.spring.io/autorepo/docs/spring-boot-data-geode-build/1.0.0.RELEASE/reference/html5/guides/caching-look-aside.html"&gt;Guide&lt;/a&gt; and &lt;a href="https://github.com/spring-projects/spring-boot-data-geode/tree/1.0.0.RELEASE/spring-geode-samples/caching/look-aside"&gt;Example Code&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="feedback"&gt;&lt;a class="anchor" href="#feedback"&gt;&lt;/a&gt;Feedback&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;We want to hear from you.  Feedback is the cornerstone of any successful project.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;a href="https://github.com/spring-projects/spring-boot-data-geode/issues"&gt;Issues&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot-data-geode/pulls"&gt;PR&lt;/a&gt; | &lt;a href="https://stackoverflow.com/questions/tagged/spring-boot"&gt;StackOverflow&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</content>
   </entry>
 </feed>

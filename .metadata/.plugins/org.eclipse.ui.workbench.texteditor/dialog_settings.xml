@@ -2,27 +2,27 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="add"/>
+		<item key="selection" value="Cause"/>
 		<item key="casesensitive" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="wrap" value="true"/>
 		<item key="wholeword" value="false"/>
 		<list key="findhistory">
+			<item value="cause"/>
+			<item value="junit"/>
+			<item value="aspect"/>
+			<item value="modalModif"/>
+			<item value="replyPageFooter"/>
+			<item value="replyCnt"/>
+			<item value="reply"/>
+			<item value="panel-body"/>
+			<item value="footer"/>
+			<item value="getList"/>
+			<item value="get"/>
+			<item value="post"/>
 			<item value="add"/>
 			<item value="modalCloseBtn"/>
 			<item value="modal fade"/>
-			<item value="modal"/>
-			<item value="produces"/>
-			<item value="page"/>
-			<item value="json"/>
-			<item value="log4j"/>
-			<item value="myba"/>
-			<item value="javax."/>
-			<item value="javax"/>
-			<item value="spring"/>
-			<item value="list"/>
-			<item value="ㅣㅑㄴㅅ"/>
-			<item value="move"/>
 		</list>
 		<list key="replacehistory">
 			<item value="/resources/"/>

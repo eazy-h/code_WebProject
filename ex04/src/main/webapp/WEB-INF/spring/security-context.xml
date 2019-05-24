@@ -19,7 +19,7 @@
 		<!-- 로그아웃 -->
 		<security:logout logout-url="/customLogout" invalidate-session="true"/>
 		
-		<security:access-denied-handler ref="customAccessDenied"/>
+		<!-- <security:access-denied-handler ref="customAccessDenied"/> -->
 		<security:form-login login-page="/customLogin" authentication-success-handler-ref="customLoginSuccess"/>
 		<!-- 커스텀 로그인 페이지 -->
 		<!-- <security:form-login/> -->

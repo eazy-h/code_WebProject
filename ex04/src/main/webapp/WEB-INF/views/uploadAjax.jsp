@@ -112,21 +112,21 @@
 			
 			//여기서 i는 인덱스 obj는 VO 객체를 뜻하여 필드명으로 접근한다.
 			$(uploadResultArr).each(function(i, obj) {
-					if(!obj.image) {
-						var fileCallPath = encodeURIComponent(obj.uploadPath + "/" + obj.uuid + "_" + obj.fileName);
-						str += "<li><a href='/download?fileName=" + fileCallPath + "'>" + "<img src='/resources/img/attach.png'>" + obj.fileName + "</a></li>";
-						
-					} else {
-
-						var fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName);
-						
-						var originPath = obj.uploadPath + "/" + obj.uuid + "_" + obj.fileName;
-						
-						originPath = originPath.replace(new RegExp(/\\/g),"/");
-						str += "<li><a href=\"javascript:showImage(\'" + originPath + "\')\">" + "<img src='display?fileName=" + fileCallPath + "'></a>" + 
-								"<span data-file=\'" + fileCallPath+"\' data-type='image'> x </span></li>";
-						/* str += "<li><a href='/download?fileName=" + originPath + "'><img src='/display?fileName=" + fileCallPath + "'></a></li>";  */
-					}
+				if(!obj.image) {
+					var fileCallPath = encodeURIComponent(obj.uploadPath + "/" + obj.uuid + "_" + obj.fileName);
+					str += "<li><a href='/download?fileName=" + fileCallPath + "'>" + "<img src='/resources/img/attach.png'>" + obj.fileName + "</a></li>";
+					
+				} else {
+	
+					var fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName);
+					
+					var originPath = obj.uploadPath + "/" + obj.uuid + "_" + obj.fileName;
+					
+					originPath = originPath.replace(new RegExp(/\\/g),"/");
+					str += "<li><a href=\"javascript:showImage(\'" + originPath + "\')\">" + "<img src='display?fileName=" + fileCallPath + "'></a>" + 
+							"<span data-file=\'" + fileCallPath+"\' data-type='image'> x </span></li>";
+					/* str += "<li><a href='/download?fileName=" + originPath + "'><img src='/display?fileName=" + fileCallPath + "'></a></li>";  */
+				}
 			});
 			
 			uploadResult.append(str);
@@ -188,8 +188,51 @@
 					alert(result);
 				}
 			})
-		})
-	});
+		});
+		
+		//파일 업로드 결과
+		function showUploadResult(uploadResultArr){
+		    
+			//화면의 result결과가 없을시 체크
+		    if(!uploadResultArr || uploadResultArr.length == 0){ return; }
+		    
+		    var uploadUL = $(".uploadResult ul");
+		    
+		    var str ="";
+		    
+		    $(uploadResultArr).each(function(i, obj){
+		    	
+		    	if(obj.image){
+					var fileCallPath =  encodeURIComponent( obj.uploadPath+ "/s_"+obj.uuid +"_"+obj.fileName);
+					str += "<li data-path='"+obj.uploadPath+"'";
+					str +=" data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"'"
+					str +" ><div>";
+					str += "<span> "+ obj.fileName+"</span>";
+					str += "<button type='button' data-file=\'"+fileCallPath+"\' "
+					str += "data-type='image' class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
+					str += "<img src='/display?fileName="+fileCallPath+"'>";
+					str += "</div>";
+					str +"</li>";
+				}else{
+					var fileCallPath =  encodeURIComponent( obj.uploadPath+"/"+ obj.uuid +"_"+obj.fileName);			      
+				    var fileLink = fileCallPath.replace(new RegExp(/\\/g),"/");
+				      
+					str += "<li "
+					str += "data-path='"+obj.uploadPath+"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"' ><div>";
+					str += "<span> "+ obj.fileName+"</span>";
+					str += "<button type='button' data-file=\'"+fileCallPath+"\' data-type='file' " 
+					str += "class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
+					str += "<img src='/resources/img/attach.png'></a>";
+					str += "</div>";
+					str +"</li>";
+				}
+		    	
+		    });
+		    
+		   	uploadUL.append(str);
+	}
+});
+
 	</script>
 </body>
 </html>

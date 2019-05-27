@@ -34,6 +34,7 @@ public class Criteria {
 	
 	//URIComponentsBuilder
 	public String getListLink() {
+		//브라우저상 GET 방식의 파라미터 전송에 사용되는 쿼리문자열 처리
 		UriComponentsBuilder builder = UriComponentsBuilder.fromPath("")
 				.queryParam("pageNum", this.getPageNum())
 				.queryParam("amount", this.getAmount())

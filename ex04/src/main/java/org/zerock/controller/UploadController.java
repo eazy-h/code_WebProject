@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.zerock.domain.AttachFileVO;
+import org.zerock.domain.BoardAttachVO;
 
 import lombok.extern.log4j.Log4j;
 import net.coobird.thumbnailator.Thumbnailator;
@@ -34,6 +34,7 @@ import net.sf.jmimemagic.MagicMatch;
 @Log4j
 public class UploadController {
 	
+	private final String uploadFolderLoc = "/Users/lj/Documents/upload/temps";
 	
 	//이미지파일 확인
 	private boolean checkImgType(File file) {
@@ -62,7 +63,7 @@ public class UploadController {
 	@PostMapping("/uploadFormAction")
 	public void uploadFormPost(MultipartFile[] uploadFile) {
 	
-		String uploadFolderLoc = "/Users/lj/Documents/upload/temps";
+		
 		
 		for(MultipartFile multipartFile : uploadFile) {
 			
@@ -86,18 +87,15 @@ public class UploadController {
 	
 	//ajax로 파일 업로드 insert
 	@PostMapping(value = "/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<List<AttachFileVO>> uploadAjaxPost(MultipartFile[] uploadFile) {
+	public ResponseEntity<List<BoardAttachVO>> uploadAjaxPost(MultipartFile[] uploadFile) {
 		
-		List<AttachFileVO> list = new ArrayList<>();
+		List<BoardAttachVO> list = new ArrayList<>();
 		
 		log.info("Post Ajax File Upload");
 		
-		String uploadFolderLoc = "/Users/lj/Documents/upload/temps";
-		
-		
 		for(MultipartFile multipartFile : uploadFile) {
 			
-			AttachFileVO vo = new AttachFileVO();
+			BoardAttachVO vo = new BoardAttachVO();
 			
 			log.info("=====================MultipartFile=====================");
 			log.info("Origin fileName : " + multipartFile.getOriginalFilename());
@@ -127,7 +125,7 @@ public class UploadController {
 				//체크 이미지 파일(썸네일)
 				if(checkImgType(saveFile)) {
 					
-					vo.setImage(true);
+					vo.setFileType(true);
 					
 					FileOutputStream thumbnail = new FileOutputStream(new File(uploadFolderLoc,"s_" + uploadFileName));
 					Thumbnailator.createThumbnail(multipartFile.getInputStream(), thumbnail, 100, 100);
@@ -146,7 +144,7 @@ public class UploadController {
 		return new ResponseEntity<>(list,HttpStatus.OK);
 	}
 	
-	@PostMapping("deleteFile")
+	@PostMapping("/deleteFile")
 	@ResponseBody
 	public ResponseEntity<String> deleteFile(String fileName, String type) {
 		log.info("Delete File Name : " + fileName);
@@ -160,7 +158,7 @@ public class UploadController {
 			
 			file.delete();
 			
-			//이미지 삭제시 썸네일도 검증
+			//이미지 삭제시 썸네일도 검증 후 같이 삭제처리
 			if(type.equals("image")) {
 				
 				String largeFileName = file.getAbsolutePath().replace("s_","");

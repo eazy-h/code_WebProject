@@ -26,7 +26,13 @@
 	<!-- 개발에선 sqlSession을 통해 Connection을 생성하거나 원하는 sql을 전달하고 결과를 리턴받는 구조로 작성한다. -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
+		<!-- mapper와 xml의 파일명이 다를때 경로 설정 -->
+		<property name="mapperLocations" value="classpath:org/zerock/mapper/**/*.xml" /> 
 	</bean>
+	
+	
+	
+	
 	
 	<!-- mybatis 설정의 지정된 패키지의 모든 어노테이션을 찾아 설정하는 것을 의미한다. -->
 	<mybatis-spring:scan base-package="org.zerock.mapper"/>

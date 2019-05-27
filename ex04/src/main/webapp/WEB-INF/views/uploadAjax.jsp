@@ -136,6 +136,7 @@
 		//Ajax로 Controller 전달
 		var cloneObj = $('.uploadDiv').clone();
 		
+		//업로드 버튼 클릭시 이미지 화면에 보여주기
 		$("#uploadBtn").on('click', function(){
 			
 			//첨부파일 전송시 객체(가상 form태그)

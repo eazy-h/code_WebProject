@@ -3,109 +3,181 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ include file="../includes/header.jsp" %>
+<style>
+.uploadResult {
+  width:100%;
+  background-color: gray;
+}
+.uploadResult ul{
+  display:flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+.uploadResult ul li {
+  list-style: none;
+  padding: 10px;
+  align-content: center;
+  text-align: center;
+}
+.uploadResult ul li img{
+  width: 100px;
+}
+.uploadResult ul li span {
+  color:white;
+}
+.bigPictureWrapper {
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  top:0%;
+  width:100%;
+  height:100%;
+  background-color: gray; 
+  z-index: 100;
+  background:rgba(255,255,255,0.5);
+}
+.bigPicture {
+  position: relative;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
 
-			<div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Board Register</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Board Modify Page
-                        </div>
-                        <div class="panel-body">
-                                    	<div class="form-group">
-                                            <label>BoardNo</label>
-                                            <input class="form-control" name="bno" value="<c:out value='${board.bno}'/>" readonly>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Title</label>
-                                            <input class="form-control" name="title" value="<c:out value='${board.title}'/>" readonly >
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Text Area</label>
-                                            <textarea class="form-control" rows="3" name="content" readonly><c:out value='${board.content}'/>
-                                            </textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Writer</label>
-                                            <input class="form-control" name="writer" value="<c:out value='${board.writer }'/>" readonly >
-                                        </div>
-                                        <button data-oper="modify" class="btn btn-default">Modify</button>
-                                        <button data-oper="list" class="btn btn-info">List</button>
-                                <!-- /.col-lg-6 (nested) -->
-                                <form id="operForm" action="/board/modify" method="get">
-                                	<input type="hidden" id='bno' name='bno' value='<c:out value="${board.bno}"/>'>
-                                	<input type="hidden" name="pageNum" value="<c:out value='${cri.pageNum}'/>">
-                                	<input type="hidden" name="amount" value="<c:out value='${cri.amount}'/>">
-                                	<input type="hidden" name="type" value="${cri.type}">
-                           			<input type="hidden" name="keyword" value="${cri.keyword}">
-                                </form> 
-                        </div>
-                        <!-- /.panel-body -->
-                        
-                    </div>
-                    <!-- /.panel -->
-                   
-                   <!-- Reply -->
-                   <div class="panel panel-default">
-					<div class="panel-heading">
-						<i class="fa fa-comments fa-fw"></i>Reply
-						<button id='addReplyBtn' class='btn btn-primary btn-xs pull-right'>New Reply</button>
-					</div>
+.bigPicture img {
+  width:600px;
+}
+
+</style>
+	<div class="row">
+          <div class="col-lg-12">
+              <h1 class="page-header">Board Register</h1>
+          </div>
+          <!-- /.col-lg-12 -->
+    </div>
+	       <!-- /.row -->
+	       <div class="row">
+	           <div class="col-lg-12">
+	               <div class="panel panel-default">
+	                   <div class="panel-heading">
+	                       Board Modify Page
+	                   </div>
+	                   <div class="panel-body">
+                          	<div class="form-group">
+                                  <label>BoardNo</label>
+                                  <input class="form-control" name="bno" value="<c:out value='${board.bno}'/>" readonly>
+                              </div>
+                              <div class="form-group">
+                                  <label>Title</label>
+                                  <input class="form-control" name="title" value="<c:out value='${board.title}'/>" readonly >
+                              </div>
+                              <div class="form-group">
+                                  <label>Text Area</label>
+                                  <textarea class="form-control" rows="3" name="content" readonly><c:out value='${board.content}'/>
+                                  </textarea>
+                              </div>
+                              <div class="form-group">
+                                  <label>Writer</label>
+                                  <input class="form-control" name="writer" value="<c:out value='${board.writer }'/>" readonly >
+                              </div>
+                              <button data-oper="modify" class="btn btn-default">Modify</button>
+                              <button data-oper="list" class="btn btn-info">List</button>
+	                       <!-- /.col-lg-6 (nested) -->
+	                       <form id="operForm" action="/board/modify" method="get">
+	                       	<input type="hidden" id='bno' name='bno' value='<c:out value="${board.bno}"/>'>
+	                       	<input type="hidden" name="pageNum" value="<c:out value='${cri.pageNum}'/>">
+	                       	<input type="hidden" name="amount" value="<c:out value='${cri.amount}'/>">
+	                       	<input type="hidden" name="type" value="${cri.type}">
+                  			<input type="hidden" name="keyword" value="${cri.keyword}">
+	                       </form> 
+	                   </div>
+	                   <!-- /.panel-body -->
+	                   
+	               </div>
+	               <!-- /.panel -->
+	               
+	               <div class="row">
+					  <div class="col-lg-12">
+					    <div class="panel panel-default">
 					
-					<div class="panel-body">
-						<ul class="chat">
-							
-	                   </ul>
-                   </div>
-                   <div class="panel-footer">
-                       	
-                   </div>
-                </div>
-              </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            
-             <!-- Modal -->
-             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                 <div class="modal-dialog">
-                     <div class="modal-content">
-                         <div class="modal-header">
-                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                             <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                         </div>
-                         <div class="modal-body">
-                         	<div class="from-group">
-                         		<label>Reply</label>
-                         		<input class="form-control" name="reply" value="New Reply!!">
-                         	</div>
-                         	<div class="from-group">
-                         		<label>Replyer</label>
-                         		<input class="form-control" name="replyer" value="replyer">
-                         	</div>
-                         	<div class="from-group">
-                         		<label>Reply Date</label>
-                         		<input class="form-control" name="replyDate" value="">
-                         	</div>
-                         </div>
-                         <div class="modal-footer">
-                             <button id="modalModifyBtn" type="button" class="btn btn-warning" data-dismiss="modal">Modify</button>
-                             <button id="modalRemoveBtn" type="button" class="btn btn-danger" data-dismiss="modal">Remove</button>
-                             <button id="modalRegisterBtn" type="button" class="btn btn-primary" data-dismiss="modal">Register</button>
-                             <button id="modalCloseBtn" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                         </div>
-                     </div>
-                     <!-- /.modal-content -->
-                 </div>
-                 <!-- /.modal-dialog -->
-             </div>
-             <!-- /.modal -->
+					      <div class="panel-heading">Files</div>
+					      <!-- /.panel-heading -->
+					      <div class="panel-body">
+					        <!-- 첨부파일 목록 view -->
+					        <div class='uploadResult'> 
+					          <ul>
+					          </ul>
+					        </div>
+					      </div>
+					      <!--  end panel-body -->
+					    </div>
+					    <!--  end panel-body -->
+					  </div>
+					  <!-- end panel -->
+					</div>
+					<!-- /.row -->
+	              
+	              <!-- Reply -->
+	   <div class="panel panel-default">
+		<div class="panel-heading">
+			<i class="fa fa-comments fa-fw"></i>Reply
+			<button id='addReplyBtn' class='btn btn-primary btn-xs pull-right'>New Reply</button>
+		</div>
+		
+		<div class="panel-body">
+			<ul class="chat">
+				
+	         </ul>
+	    </div>
+	        <div class="panel-footer">
+	            	
+	        </div>
+	     </div>
+   </div>
+     <!-- /.col-lg-12 -->
+ </div>
+ <!-- /.row -->
+	       
+	        <!-- Modal -->
+	        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	            <div class="modal-dialog">
+	                <div class="modal-content">
+	                    <div class="modal-header">
+	                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+	                    </div>
+	                    <div class="modal-body">
+	                    	<div class="from-group">
+	                    		<label>Reply</label>
+	                    		<input class="form-control" name="reply" value="New Reply!!">
+	                    	</div>
+	                    	<div class="from-group">
+	                    		<label>Replyer</label>
+	                    		<input class="form-control" name="replyer" value="replyer">
+	                    	</div>
+	                    	<div class="from-group">
+	                    		<label>Reply Date</label>
+	                    		<input class="form-control" name="replyDate" value="">
+	                    	</div>
+	                    </div>
+	                    <div class="modal-footer">
+	                        <button id="modalModifyBtn" type="button" class="btn btn-warning" data-dismiss="modal">Modify</button>
+	                        <button id="modalRemoveBtn" type="button" class="btn btn-danger" data-dismiss="modal">Remove</button>
+	                        <button id="modalRegisterBtn" type="button" class="btn btn-primary" data-dismiss="modal">Register</button>
+	                        <button id="modalCloseBtn" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	                    </div>
+	                </div>
+	                <!-- /.modal-content -->
+	            </div>
+	            <!-- /.modal-dialog -->
+	        </div>
+	        <!-- /.modal -->
+	        
+	        <div class='bigPictureWrapper'>
+			  <div class='bigPicture'>
+			  </div>
+			</div>
         <script type="text/javascript" src="/resources/js/reply.js"></script>    
         <script type="text/javascript">
         	$(document).ready(function(){
@@ -155,10 +227,79 @@
         			console.log(resultData);	
         		}); */
         		
-        		
+        		//게시글 번호 가져오기
         		var bnoValue = '<c:out value = "${board.bno}"/>';
+
+        		//게시물 조회 파일첨부(즉시실행함수)
+        		(function() {
+        			$.getJSON("/board/getAttachList", {bno:bnoValue}, function(arr){
+        				
+        				console.log(arr);
+        				var str ="";
+        				
+        				$(arr).each(function(i, attach){
+     				       
+       			         //파일 이미지 여부
+       			         if(attach.fileType){
+       			           var fileCallPath =  encodeURIComponent(attach.uploadPath + "/s_" + attach.uuid + "_" + attach.fileName);
+       			           
+       			           str += "<li data-path='"+attach.uploadPath+"' data-uuid='"+attach.uuid+"' data-filename='"+attach.fileName+"' data-type='"+attach.fileType+"' ><div>";
+       			           str += "<img src='/display?fileName="+fileCallPath+"'>";
+       			           str += "</div>";
+       			           str +"</li>";
+       			         } else {
+       			             
+       			           str += "<li data-path='" + attach.uploadPath + "' data-uuid='" + attach.uuid + "' data-filename='" + attach.fileName + "' data-type='" + attach.fileType + "' ><div>";
+       			           str += "<span> "+ attach.fileName + "</span><br/>";
+       			           str += "<img src='/resources/img/attach.png'></a>";
+       			           str += "</div>";
+       			           str +"</li>";
+       			         }
+       			       });
+       			       
+       			       $(".uploadResult ul").html(str);
+        			}); 
+        		})();
+        		
+        		
+        		//첨부파일 클릭 후 이벤트
+        		$(".uploadResult").on('click','li', function(e){
+        			console.log("view Img");
+        			
+        			var liObj = $(this);
+        			//파일경로
+        			var path = encodeURIComponent(liObj.data("path") + "/" + liObj.data("uuid") + "_" + liObj.data("filename"));
+        			
+        			if(liObj.data('type')) {
+        				showImage(path.replace(new RegExp(/\\/g),"/"));
+        			} else {
+        				self.location = "/download?fileName=" + path;
+        			}
+        		});
+        		
+        		//보여주기
+        		function showImage(fileCallPath) {
+        			/* alert(fileCallPath); */
+        			
+        			$(".bigPictureWrapper").css("display","flex").show();
+        			    
+       			    $(".bigPicture").html("<img src='/display?fileName="+fileCallPath+"' >")
+       			    .animate({width:'100%', height: '100%'}, 700);
+       			    
+	       			$(".bigPictureWrapper").on("click", function(e){
+	       			   $(".bigPicture").animate({width:'0%', height: '0%'}, 800);
+	       			   setTimeout(function(){
+	       			   $('.bigPictureWrapper').hide();
+	       			    }, 800);
+	       			});
+        		}
+        		
+        		
+        		
+        		//댓글 html 기준
         		var replyUL = $('.chat');
         		
+        		//댓글 초기화리스트
         		showList(1);
         		
         		function showList(page) {

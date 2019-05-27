@@ -1,5 +1,15 @@
 package org.zerock.controller;
 
+import java.io.File;
+import java.net.URLDecoder;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,7 +17,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.zerock.domain.BoardAttachVO;
 import org.zerock.domain.BoardDTO;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.PageDTO;
@@ -15,6 +27,8 @@ import org.zerock.service.BoardService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
+import net.sf.jmimemagic.Magic;
+import net.sf.jmimemagic.MagicMatch;
 
 @Controller
 @Log4j
@@ -45,8 +59,14 @@ public class BoardController {
 	@PostMapping("/register")
 	public String register(BoardDTO board, RedirectAttributes rttr) {
 		log.info("register : "+board);
+		
+		if(board.getAttachList() != null) {
+			board.getAttachList().forEach(attach ->log.info(attach));
+		}
+		
 		service.register(board);
 		rttr.addFlashAttribute("result",board.getBno());
+		log.info("---------/register----------");
 		return "redirect:/board/list";
 	}
 	
@@ -64,19 +84,25 @@ public class BoardController {
 			rttr.addFlashAttribute("result","success");
 		}
 		
-//		rttr.addAttribute("pageNum",cri.getPageNum());
-//		rttr.addAttribute("amount",cri.getAmount());
-//		rttr.addAttribute("type",cri.getType());
-//		rttr.addAttribute("keyword",cri.getKeyword());
+		rttr.addAttribute("pageNum",cri.getPageNum());
+		rttr.addAttribute("amount",cri.getAmount());
+		rttr.addAttribute("type",cri.getType());
+		rttr.addAttribute("keyword",cri.getKeyword());
 		return "redirect:/board/list" + cri.getListLink();
 	}
 	
 	@PostMapping("/delete")
 	public String remove(@RequestParam("bno")Long bno, RedirectAttributes rttr, @ModelAttribute("cri") Criteria cri) {
 		log.info("delete : "+ bno);
+		
+		List<BoardAttachVO> attachList = service.getAttachList(bno);
+			
 		if(service.remove(bno)) {
+			deleteFiles(attachList);
 			rttr.addFlashAttribute("result","success");
 		}
+		
+		
 		rttr.addAttribute("pageNum",cri.getPageNum());
 		rttr.addAttribute("amount",cri.getAmount());
 		rttr.addAttribute("type",cri.getType());
@@ -90,4 +116,61 @@ public class BoardController {
 	public void register() {
 		
 	}
+	
+	//리스트 보여주기(화면에 파일 첨부시)
+	@GetMapping(value = "/getAttachList", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ResponseBody
+	public ResponseEntity<List<BoardAttachVO>> getAttachList(Long bno) {
+		log.info("getAttachListBno : " + bno);
+
+		return new ResponseEntity<>(service.getAttachList(bno),HttpStatus.OK);
+		
+	}
+	
+	//게시물 삭제 후 첨부파일 삭제
+	private void deleteFiles(List<BoardAttachVO> attachList) {
+	    
+	    if(attachList == null || attachList.size() == 0) {
+	      return;
+	    }
+	    
+	    log.info("delete attach files" + attachList);
+	    
+	    attachList.forEach(attach -> {
+	      
+	    	File file;
+	    	
+	    try {        
+	        String filePath  = attach.getUploadPath()+"/" + attach.getUuid()+"_"+ attach.getFileName();
+	        
+	        log.info("filePath ____________________ -----> : " + filePath);
+//	        Files.deleteIfExists(filePath);
+//	        
+//	        File file = new File(attach.getUploadPath(), attach.getFileName());
+	        file = new File(URLDecoder.decode(filePath,"UTF-8"));
+	        
+	        
+	        Magic magic = new Magic();
+	        MagicMatch match = magic.getMagicMatch(file,false);
+			String mime = match.getMimeType();
+			log.info("mime type : " + mime);
+			
+			file.delete();
+			
+	        if(mime.contains("image")) {
+	        
+	          String thumbnailPath= attach.getUploadPath()+"/s_" + attach.getUuid()+"_"+ attach.getFileName();
+	          log.info("thumbnailPath Name : " + thumbnailPath);
+	          
+	          file = new File(thumbnailPath);
+	          file.delete();
+	        }
+	
+	      }catch(Exception e) {
+	        log.error("delete file error" + e.getMessage());
+	      }
+	    });
+	  }
+	
+	
 }

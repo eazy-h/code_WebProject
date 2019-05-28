@@ -81,12 +81,14 @@ public class BoardServiceImpl implements BoardService{
 		attachMapper.deleteAll(bno);
 		return mapper.delete(bno)==1;
 	}
+	
 //	//전체 게시물 list
 //	@Override
 //	public List<BoardDTO> getList() {
 //		log.info("getList......");
 //		return mapper.getList();
 //	}
+	
 	//전체 게시물 list + Paging
 	@Override
 	public List<BoardDTO> getList(Criteria cri) {

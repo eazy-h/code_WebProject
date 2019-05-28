@@ -95,6 +95,7 @@ public class BoardController {
 	public String remove(@RequestParam("bno")Long bno, RedirectAttributes rttr, @ModelAttribute("cri") Criteria cri) {
 		log.info("delete : "+ bno);
 		
+		//게시물의 bno로 해당 첨부파일 리스트 가져오기
 		List<BoardAttachVO> attachList = service.getAttachList(bno);
 			
 		if(service.remove(bno)) {
@@ -162,7 +163,7 @@ public class BoardController {
 	          String thumbnailPath= attach.getUploadPath()+"/s_" + attach.getUuid()+"_"+ attach.getFileName();
 	          log.info("thumbnailPath Name : " + thumbnailPath);
 	          
-	          file = new File(thumbnailPath);
+	          file = new File(URLDecoder.decode(thumbnailPath,"UTF-8"));
 	          file.delete();
 	        }
 	

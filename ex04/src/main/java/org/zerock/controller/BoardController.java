@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -57,6 +58,7 @@ public class BoardController {
 	//String 타입으로 한 이유는 글 등록 후 다시 목록화면으로 redirect하기 위함
 	//리턴시 redirect를 입력하는 이유는 스프링MVC가 내부적으로 response.sendRedirect를 처리해줌
 	@PostMapping("/register")
+	@PreAuthorize("isAuthenticated()") //로그인 허용된 사용자만 /register 접근 가능 처리
 	public String register(BoardDTO board, RedirectAttributes rttr) {
 		log.info("register : "+board);
 		
@@ -77,6 +79,7 @@ public class BoardController {
 		model.addAttribute("board",service.get(bno));
 	}
 	
+	@PreAuthorize("principal.username == #board.writer")
 	@PostMapping("/modify")
 	public String modify(BoardDTO board, RedirectAttributes rttr, @ModelAttribute("cri") Criteria cri) {
 		log.info("modify : "+board);
@@ -91,8 +94,9 @@ public class BoardController {
 		return "redirect:/board/list" + cri.getListLink();
 	}
 	
+	@PreAuthorize("principal.username == #writer") 
 	@PostMapping("/delete")
-	public String remove(@RequestParam("bno")Long bno, RedirectAttributes rttr, @ModelAttribute("cri") Criteria cri) {
+	public String remove(@RequestParam("bno")Long bno, RedirectAttributes rttr, @ModelAttribute("cri") Criteria cri, String writer) {
 		log.info("delete : "+ bno);
 		
 		//게시물의 bno로 해당 첨부파일 리스트 가져오기
@@ -112,7 +116,7 @@ public class BoardController {
 		return "redirect:/board/list" + cri.getListLink();
 	}	
 	
-	
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/register")
 	public void register() {
 		

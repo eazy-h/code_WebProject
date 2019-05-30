@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%@ include file="../includes/header.jsp" %>
 <style>
 .uploadResult {
@@ -71,10 +72,11 @@
                         </div>
                         <div class="form-group">
                             <label>Writer</label>
-                            <input class="form-control" name="writer">
+                            <input class="form-control" name="writer" value='<sec:authentication property="principal.username"/>' readonly>
                         </div>
                         <button type="submit" class="btn btn-default">Submit</button>
                         <button type="reset" class="btn btn-default">Reset</button>
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                     </form>
                 <!-- /.col-lg-6 (nested) -->
                  </div>
@@ -182,6 +184,10 @@ $(document).ready(function(e){
     }
     return true;
   }
+  
+  //스프링 시큐리티 처리
+  var csrfHeaderName ="${_csrf.headerName}"; 
+  var csrfTokenValue="${_csrf.token}";
   
   //파일 input 변경시 이미지 썸네일 보여주기
   $("input[type='file']").change(function(e){

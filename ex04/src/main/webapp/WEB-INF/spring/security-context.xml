@@ -6,7 +6,7 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	<!-- 에러페이지 URL 설정 -->
 	<bean id="customAccessDenied" class="org.zerock.security.CustomAccessDeniedHandler"></bean>
-	<bean id="customLoginSuccess" class="org.zerock.security.CustomLoginSuccessHandler"></bean>
+	<!-- <bean id="customLoginSuccess" class="org.zerock.security.CustomLoginSuccessHandler"></bean> -->
 	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
 	<bean id="CustomUserDetailsService" class="org.zerock.security.CustomUserDetailsService"></bean>
 	
@@ -18,9 +18,10 @@
 		
 		<!-- 로그아웃 -->
 		<security:logout logout-url="/customLogout" invalidate-session="true"/>
-		
-		<!-- <security:access-denied-handler ref="customAccessDenied"/> -->
-		<security:form-login login-page="/customLogin" authentication-success-handler-ref="customLoginSuccess"/>
+		<security:access-denied-handler ref="customAccessDenied" />
+		<!-- <security:form-login login-page="/customLogin" authentication-success-handler-ref="customLoginSuccess"/> -->
+		<security:form-login login-page="/customLogin"/>
+
 		<!-- 커스텀 로그인 페이지 -->
 		<!-- <security:form-login/> -->
 		

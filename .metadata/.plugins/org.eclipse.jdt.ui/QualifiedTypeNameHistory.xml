@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="org.aspectj.lang.annotation.AfterThrowing"/>
 <fullyQualifiedTypeName name="org.aspectj.lang.annotation.Around"/>
 <fullyQualifiedTypeName name="org.aspectj.lang.ProceedingJoinPoint"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
@@ -60,4 +59,5 @@
 <fullyQualifiedTypeName name="java.nio.file.Files"/>
 <fullyQualifiedTypeName name="org.zerock.domain.AttachFileVO"/>
 <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
+<fullyQualifiedTypeName name="org.springframework.security.access.prepost.PreAuthorize"/>
 </qualifiedTypeNameHistroy>

@@ -242,14 +242,16 @@ $(document).ready(function() {
     
     var targetFile = $(this).data("file");
     var type = $(this).data("type");
+    var targetLi = $(this).closest("li");
       
     if(confirm("파일을 삭제하시겠습니까?")){
-    
-      var targetLi = $(this).closest("li");
       
       $.ajax({
           url: '/deleteFile',
           data: {fileName: targetFile, type:type},
+          beforeSend: function(xhr) {
+         	  xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+           },
           dataType:'text',
           type: 'POST',
             success: function(result){
@@ -277,6 +279,10 @@ $(document).ready(function() {
     return true;
   }
   
+  var csrfHeaderName ="${_csrf.headerName}"; 
+  var csrfTokenValue="${_csrf.token}";
+  
+  
   $("input[type='file']").change(function(e){
 
     var formData = new FormData();
@@ -298,6 +304,9 @@ $(document).ready(function() {
       url: '/uploadAjaxAction',
       processData: false, 
       contentType: false,
+      beforeSend: function(xhr) {
+     	  xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+       },
       data:formData,
       type: 'POST',
       dataType:'json',

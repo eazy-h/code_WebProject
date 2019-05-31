@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,6 +31,7 @@ public class ReplyController {
 	private ReplyService service;
 	
 	//댓글 insert
+	@PreAuthorize("isAuthenticated()")
 	@PostMapping(value = "/new",
 			consumes = "application/json",
 			produces = { MediaType.TEXT_PLAIN_VALUE })
@@ -69,10 +71,11 @@ public class ReplyController {
 	}
 	
 	//댓글 지우기
-	@DeleteMapping(value = "/{rno}",
-			produces = { MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<String> delete(@PathVariable("rno") Long rno) {
+	@PreAuthorize("principal.username == #vo.replyer")
+	@DeleteMapping("/{rno}")
+	public ResponseEntity<String> delete(@PathVariable("rno") Long rno, @RequestBody ReplyVO vo) {
 		log.info("delete Reply No :" + rno);
+		log.info("delete Reply VO & replyer :" + vo + vo.getReplyer());
 		
 		int deleteResult = service.delete(rno);
 		
@@ -83,16 +86,17 @@ public class ReplyController {
 	
 	
 	//댓글 수정
+	@PreAuthorize("principal.username == #vo.replyer")
 	@RequestMapping(method = { RequestMethod.PUT, RequestMethod.PATCH },
 			value = "/{rno}",
-			consumes = "application/json",
-			produces = { MediaType.TEXT_PLAIN_VALUE })
+			consumes = "application/json")
 	public ResponseEntity<String> modify(@RequestBody ReplyVO vo, @PathVariable("rno") Long rno) {
 		
 		//수정할 리플 번호를 세팅해준다.
 		vo.setRno(rno);
 		
 		log.info("rno : " + rno);
+		log.info("modify : " + vo);
 		
 		int modifyResult = service.modify(vo);
 		return modifyResult == 1 

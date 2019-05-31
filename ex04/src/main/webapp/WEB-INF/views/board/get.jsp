@@ -162,7 +162,7 @@
 	                    	</div>
 	                    	<div class="from-group">
 	                    		<label>Replyer</label>
-	                    		<input class="form-control" name="replyer" value="replyer">
+	                    		<input class="form-control" name="replyer" value="replyer" readonly>
 	                    	</div>
 	                    	<div class="from-group">
 	                    		<label>Reply Date</label>
@@ -352,9 +352,22 @@
         		var modalRemoveBtn = $('#modalRemoveBtn');
         		var modalRegisterBtn = $('#modalRegisterBtn');
         		
+        		//사용자 아이디 spring security 권한설정
+        		var replyer = null;
+        		
+        		<sec:authorize access="isAuthenticated()">
+        		
+        		replyer = '<sec:authentication property="principal.username"/>';
+        		
+        		</sec:authorize>
+        		
+        		var csrfHeaderName ="${_csrf.headerName}"; 
+       		    var csrfTokenValue="${_csrf.token}";
+        		
         		$('#addReplyBtn').on('click',function(){
         			
         			modal.find("input").val(""); 
+        			modal.find("input[name='replyer']").val(replyer);
 	        		modalInputReplyDate.closest("div").hide();
 	        		modal.find('button[id != "modalCloseBtn"]').hide();
 	        		
@@ -362,6 +375,12 @@
 	        		$('.modal').modal('show');
 	        		
         		});
+        		
+        		//ajax spring security header
+        		$(document).ajaxSend(function(e, xhr, options){
+        			xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+        		});
+        		
         		
         		//댓글 추가 처리
         		modalRegisterBtn.on('click', function(){
@@ -408,13 +427,27 @@
         		
         		//댓글 수정
         		modalModifyBtn.on('click', function(){
-        			var reply = {rno : modal.data("rno"), reply : modalInputReply.val()};
+        			var originReplyer = modalInputReplyer.val();
+        			var reply = {rno : modal.data("rno"), reply : modalInputReply.val(), replyer : originReplyer};
+        			
+        			if(!replyer) {
+        				alert("로그인 후 수정이 가능합니다.");
+        				modal.modal("hide");
+        				self.location="/customLogin";
+        				return;
+        			}
+        			
+        			if(replyer != originReplyer) {
+        				alert("삭제할 권한이 없습니다.");
+        				modal.modal("hide");
+        				return;
+        			}
         			
         			replyService.modify(reply, function(result){
         				
         				alert(result);
         				modal.modal("hide");
-        				showListp(pageNum);
+        				showList(pageNum);
         				
         			})
         		});
@@ -422,8 +455,24 @@
         		//댓글 삭제
         		modalRemoveBtn.on('click', function(){
         			var rno = modal.data("rno");
+        			var originReplyer = modalInputReplyer.val();
         			
-        			replyService.remove(rno, function(result){
+        			//로그인한지 체크
+        			if(!replyer) {
+        				alert("로그인 후 삭제가 가능합니다.");
+        				modal.modal("hide");
+        				self.location="/customLogin";
+        				return;
+        			}
+        			
+        			//자신의 댓글 삭제인지
+        			if(replyer != originReplyer) {
+        				alert("해당 게시물을 삭제할 권한이 없습니다.");
+        				modal.modal("hide");
+        				return;
+        			}
+        			
+        			replyService.remove(rno, originReplyer, function(result){
         			
         				alert(result);
         				modal.modal("hide");
